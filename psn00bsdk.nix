@@ -6,6 +6,7 @@
 , gcc
 , binutils
 , mipsel-embedded
+, writeText
 }:
 
 let
@@ -24,9 +25,8 @@ in stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ cmake gnumake ];
+
   buildInputs = [
-    gcc
-    binutils
     toolchain.gcc
     toolchain.binutils
   ];
@@ -38,6 +38,11 @@ in stdenv.mkDerivation rec {
   ];
 
   patches = [ ./0001-Fix-lzp-stdlib.patch ];
+
+  setupHook = writeText "setupHook.sh" ''
+    export PSN00BSDK=@out@
+    echo 'SDK is avaliable at $PSN00BSDK'
+  '';
 
   installPhase = ''
     mkdir -p $out
