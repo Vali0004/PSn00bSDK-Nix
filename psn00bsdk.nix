@@ -39,11 +39,6 @@ in stdenv.mkDerivation rec {
 
   patches = [ ./0001-Fix-lzp-stdlib.patch ];
 
-  preConfigure = ''
-    export PATH=${toolchain.gcc}:${toolchain.binutils}:${gnumake}:$PATH
-    export CMAKE_MAKE_PROGRAM=${gnumake}/bin/make
-  '';
-
   installPhase = ''
     mkdir -p $out
     cp -r tree/bin tree/lib tree/include $out/

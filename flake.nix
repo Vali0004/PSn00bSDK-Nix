@@ -27,7 +27,8 @@
         };
         psn00bsdk = pkgs.callPackage ./psn00bsdk.nix {};
       in {
-        inherit (pkgs) psn00bsdk;
+        inherit pkgs;
+        inherit psn00bsdk;
         default = psn00bsdk;
         n00bdemo = pkgsMipsel.callPackage ./n00bdemo { inherit psn00bsdk; };
       }
