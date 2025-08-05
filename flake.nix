@@ -36,6 +36,15 @@
       }
     );
 
+    apps = nixpkgs.lib.genAttrs [ "x86_64-linux" "aarch64-linux" ] (system: let
+      pkgs = self.packages.${system};
+    in {
+      default = {
+        type = "app";
+        program = "${pkgs.runDemo}/bin/runDemo";
+      };
+    });
+
     devShells = nixpkgs.lib.genAttrs [ "x86_64-linux" "aarch64-linux" ] (system: {
       default = self.packages.${system}.n00bdemo;
     });
