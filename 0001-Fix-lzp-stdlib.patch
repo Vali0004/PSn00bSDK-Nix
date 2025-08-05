@@ -1,0 +1,12 @@
+diff --git a/libpsn00b/lzp/lzp.h b/libpsn00b/lzp/lzp.h
+index 1aeea30..3d03516 100644
+--- a/libpsn00b/lzp/lzp.h
++++ b/libpsn00b/lzp/lzp.h
+@@ -26,6 +26,7 @@
+ #pragma once
+ 
+ #include <stdint.h>
++#include <stdlib.h>
+ #ifdef _WIN32
+ #include <windows.h>
+ #endif
