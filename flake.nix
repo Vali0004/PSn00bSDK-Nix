@@ -29,6 +29,10 @@
         n00bdemo = pkgsMipsel.callPackage ./n00bdemo { inherit psn00bsdk; };
       in {
         inherit psn00bsdk n00bdemo;
+        runDemo = pkgs.writeShellScriptBin "runDemo" ''
+          echo '${n00bdemo}'
+          ${pkgs.duckstation}/bin/duckstation-qt ${n00bdemo}/n00bdemo.exe -fastboot
+        '';
         default = n00bdemo;
       }
     );
